@@ -9,6 +9,33 @@
 
     <!-- AR.js（安定版） -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
+    <style>
+    body { margin: 0; overflow: hidden; }
+
+    /* UIレイヤー */
+    .ui {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* ←重要 */
+    }
+
+    /* ボタン */
+    .capture-btn {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid black;
+      pointer-events: auto; /* ←ここでクリック可能に */
+    }
+  </style>
 </head>
 
 <body style="margin:0; overflow:hidden;">
@@ -16,12 +43,17 @@
         arjs="sourceType: webcam; debugUIEnabled: true;">
 
         <a-marker preset="hiro">
-            <a-text value="HELLO WORLD" position="0 0.1 0" rotation="-90 0 0" align="center" color="yellow" width="2">
+            <a-text value="HELLO WORLD" position="0 0.1 0" rotation="-90 0 0" align="center" color="blue" width="2">
             </a-text>
         </a-marker>
 
         <a-entity camera></a-entity>
     </a-scene>
+
+    <!-- UI -->
+    <div class="ui">
+        <button class="capture-btn"></button>
+    </div>
 </body>
 
 </html>
